@@ -1,54 +1,107 @@
-# deep-grill
+<p align="right">
+  <a href="./README.zh-CN.md"><img src="https://img.shields.io/badge/README-中文说明-ff5c4d?style=flat-square" alt="阅读中文说明"></a>
+</p>
 
-[![Install with skills.sh](https://img.shields.io/badge/skills.sh-nxxxsooo%2Fdeep--grill-blue)](https://skills.sh)
+<p align="center">
+  <img src="./assets/release/deep-grill-social-preview.png" alt="deep-grill — the agent grills itself first" width="100%">
+</p>
 
-拷问（grilling）是让 Agent 对齐你真实意图的最好方式 — 但访谈式拷问会把每个问题都抛给*你*，一次一个，哪怕那些问题 Agent 自己读读文档、翻翻代码就能回答。
+<h1 align="center">deep-grill</h1>
 
-**deep-grill 保留拷问的狠劲，但把举证责任还给 Agent。** 它自我拷问决策树的每一条分支，先反驳自己的答案，最后只把真正主观的分歧一次性汇总给你确认。
+<p align="center"><strong>The agent grills itself first.</strong></p>
 
-English: an agent skill that grills a plan autonomously — self-Q&A every branch, argue against its own answers, escalate only the subjective forks in one batch.
+<p align="center">
+  An Agent Skill that investigates every branch of a plan, argues against its own answers,<br>
+  and escalates only the genuinely subjective forks — in one decision batch.
+</p>
 
-## 快速开始（30 秒）
+<p align="center">
+  <a href="#quickstart"><img src="https://img.shields.io/badge/skills.sh-nxxxsooo%2Fdeep--grill-111418" alt="Install with skills.sh"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-ff5c4d" alt="MIT License"></a>
+</p>
 
-1. **安装 Skill：**
+Grilling is one of the best ways to align an agent with what you actually want. But interview-style grilling asks *you* every question, one at a time — including the questions the agent could answer by reading the code, checking the docs, or running a small experiment.
+
+**deep-grill keeps the relentlessness and moves the burden of proof back to the agent.** It walks the decision tree itself, investigates before answering, argues against its own conclusion, and brings you only the forks that truly require human judgment.
+
+## Quickstart
+
+1. Install the skill:
 
    ```bash
    npx skills@latest add nxxxsooo/deep-grill
    ```
 
-   适用于 Claude Code、Codex 以及任何遵循 Agent Skills 标准的工具。也可以为 Claude Code 手动安装：
+2. Draft or paste a plan.
 
-   ```bash
-   git clone https://github.com/nxxxsooo/deep-grill ~/.claude/skills/deep-grill
-   ```
+3. Say:
 
-2. **起草或粘贴一份方案。**
+   > deep grill this plan
 
-3. **说：**
+> [!TIP]
+> Naming the skill explicitly is the most reliable trigger across Claude Code, Codex, and other Agent Skills-compatible harnesses.
 
-   > deep grill 这个方案
+## Why this exists
 
-## 为什么需要这个 Skill
-
-> "No one knows exactly what they want."
+> “No one knows exactly what they want.”
 >
-> — [The Pragmatic Programmer](https://en.wikipedia.org/wiki/The_Pragmatic_Programmer)
+> — *The Pragmatic Programmer*
 
-**问题：** 经典拷问（比如启发了本 Skill 的 [grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md)）以访谈形式一次问你一个问题。当答案在你脑子里时这很完美；但当大多数答案在代码库、文档或一次快速实验里时，串行审问只是把 Agent 的功课外包给了你 — 问到第二十个问题，做调研的人变成了你。
+Classic grilling — such as [`grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md), which inspired this skill — is excellent when the answers live in your head. It becomes expensive when most answers live in the repository, documentation, tests, or a quick experiment. Twenty questions later, the user is doing the agent's homework.
 
-**解法：** 把拷问的方向反过来。Agent 自己走完决策树，逐个解决决策之间的依赖。每个问题它先自行调查 — 读文档、翻代码、派子 Agent — 给出最佳答案，再反驳一遍，站得住才算数。只有闯过这道关卡的分歧才会到你面前，一次性汇总，每条附推荐答案。在你确认达成共识之前，不动手实现。
+deep-grill reverses that direction:
 
-## 参考
+- Project facts are investigated in the code, docs, tests, and available tools.
+- Each provisional answer is challenged before it is accepted.
+- Only genuinely subjective decisions are escalated.
+- Those decisions arrive together, each with a recommended answer.
+- Implementation waits until you confirm shared understanding.
 
-**模型自动触发。** 当你说「deep grill」或要求自主地压力测试一份方案时，Agent 会自动调用。它与访谈式拷问互补而非替代 — 答案在你脑子里时用访谈，答案在仓库里时用 deep-grill。
+## How it works
 
-一次会话会做什么：
+<p align="center">
+  <img src="./assets/release/deep-grill-workflow.png" alt="deep-grill workflow: plan, evidence, self-grill loop, and subjective forks" width="100%">
+</p>
 
-- 走遍决策树的每一条分支，逐个解决决策之间的依赖。
-- 每个问题先自行调查，给出最佳答案，再反驳一遍才接受。
-- 只把真正主观的分歧一次性汇总，每条附推荐答案。
-- 在你确认达成共识之前，不动手实现。
+1. **Map the decision tree.** Identify branches, dependencies, assumptions, and unknowns.
+2. **Investigate first.** Read the relevant sources and run focused checks before asking the user.
+3. **Answer, then argue.** Name the best answer and make the strongest case against it.
+4. **Escalate the irreducible choices.** Batch only the subjective forks, each with a recommendation.
+5. **Wait for alignment.** Do not implement until shared understanding is confirmed.
 
-## 许可证
+## Choose the right grill
 
-MIT
+<p align="center">
+  <img src="./assets/release/deep-grill-comparison-square.png" alt="Classic grilling compared with deep-grill" width="760">
+</p>
+
+| Where the answers live | Use | Interaction pattern |
+| --- | --- | --- |
+| In the user's goals, taste, or unstated preferences | Interactive grilling | Ask one focused question at a time |
+| In the repository, docs, tests, tools, or experiments | **deep-grill** | Investigate autonomously, then batch the subjective choices |
+
+deep-grill complements interactive grilling; it does not replace it.
+
+## Trigger it reliably
+
+The portable, explicit trigger is:
+
+> deep grill this plan
+
+You can also state the full intent:
+
+> Autonomously stress-test every branch of this plan. Investigate anything you can answer from the repository or docs, argue against your own conclusions, and bring me only the subjective decisions in one batch.
+
+Automatic invocation depends on how each agent harness matches skill descriptions. If you need deterministic behavior, name `deep-grill` directly.
+
+## Manual installation
+
+The `skills` CLI works with Claude Code, Codex, and other harnesses that follow the Agent Skills standard. For a manual Claude Code installation:
+
+```bash
+git clone https://github.com/nxxxsooo/deep-grill ~/.claude/skills/deep-grill
+```
+
+## License
+
+[MIT](./LICENSE)
