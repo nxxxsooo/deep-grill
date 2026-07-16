@@ -25,6 +25,22 @@ Grilling is one of the best ways to align an agent with what you actually want. 
 
 **deep-grill keeps the relentlessness and moves the burden of proof back to the agent.** It walks the decision tree itself, investigates before answering, argues against its own conclusion, and brings you only the forks that truly require human judgment.
 
+## The entire skill
+
+deep-grill is three paragraphs. This is the full [`SKILL.md`](./SKILL.md) body you install:
+
+> Interrogate every material branch yourself, resolving dependencies between decisions one by one: investigate via the code, docs, tests, tools, and subagents; choose the best answer; then argue against it and revise until it survives or becomes genuinely subjective.
+>
+> Spend available token budget on deeper internal investigation, not more user questions; when constrained, prioritize high-impact branches and disclose what remains unexamined.
+>
+> Ask only about choices that depend on the user's goals, taste, or authority, or facts unavailable after reasonable investigation. Surface them in one batch with recommendations, then wait for confirmation before enacting the plan.
+
+What each paragraph buys you:
+
+- **Answer, argue, revise.** Every provisional answer must survive its own strongest counter-argument — or be escalated as genuinely subjective.
+- **Budget goes to investigation.** Tokens are spent digging deeper, not asking more; whatever remains unexamined is disclosed, never silently skipped.
+- **A precise escalation bar.** Only goals, taste, authority, or facts that reasonable investigation can't reach — batched, with recommendations, and no implementation before sign-off.
+
 ## Quickstart
 
 1. Install the skill:

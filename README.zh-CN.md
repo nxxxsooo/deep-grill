@@ -25,6 +25,22 @@
 
 **deep-grill 保留拷问的狠劲，但把举证责任还给 Agent。** 它自己走完决策树，先调查再回答，再反驳自己的结论，最后只把真正需要人类判断的分歧一次性汇总给你。
 
+## 正文就这么长
+
+deep-grill 一共三段话。以下就是你要安装的完整 [`SKILL.md`](./SKILL.md) 正文：
+
+> Interrogate every material branch yourself, resolving dependencies between decisions one by one: investigate via the code, docs, tests, tools, and subagents; choose the best answer; then argue against it and revise until it survives or becomes genuinely subjective.
+>
+> Spend available token budget on deeper internal investigation, not more user questions; when constrained, prioritize high-impact branches and disclose what remains unexamined.
+>
+> Ask only about choices that depend on the user's goals, taste, or authority, or facts unavailable after reasonable investigation. Surface them in one batch with recommendations, then wait for confirmation before enacting the plan.
+
+三段各自的作用：
+
+- **回答、反驳、修正。** 每个暂定答案都要扛住针对它的最强反驳——扛不住就修正，修不动才作为真正主观的分歧升级。
+- **预算花在调查上。** token 用来往深处挖，而不是多问几轮；没来得及查的部分明确披露，绝不静默跳过。
+- **精确的升级门槛。** 只升级取决于你的目标、品味、权限，或合理调查也拿不到的事实——一次性汇总、附推荐答案，确认前不动手实现。
+
 ## 快速开始
 
 1. 安装 Skill：
