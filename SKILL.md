@@ -1,6 +1,6 @@
 ---
 name: deep-grill
-description: Autonomously stress-test a plan or design before asking the user. Use for "deep grill", adversarial review, pressure-testing, assumption-challenging, or 深度拷问/压测/挑刺一个方案. For one-question-at-a-time interviewing, use grilling instead.
+description: Autonomously stress-test a plan or design before asking the user. Use when the user says "deep grill" or requests adversarial review, pressure-testing, assumption-challenging, or self-critique before implementation.
 ---
 
 Interrogate every material branch yourself: investigate the code, docs, tests, tools, and useful subagents; choose the best answer; then argue against it and revise until it survives or becomes genuinely subjective.

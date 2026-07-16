@@ -18,6 +18,7 @@
 <p align="center">
   <a href="#quickstart"><img src="https://img.shields.io/badge/skills.sh-nxxxsooo%2Fdeep--grill-111418" alt="Install with skills.sh"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-ff5c4d" alt="MIT License"></a>
+  <a href="./README.zh-CN.md"><img src="https://img.shields.io/badge/README-中文说明-ff5c4d" alt="阅读中文说明"></a>
 </p>
 
 Grilling is one of the best ways to align an agent with what you actually want. But interview-style grilling asks *you* every question, one at a time — including the questions the agent could answer by reading the code, checking the docs, or running a small experiment.

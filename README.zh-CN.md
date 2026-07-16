@@ -18,6 +18,7 @@
 <p align="center">
   <a href="#快速开始"><img src="https://img.shields.io/badge/skills.sh-nxxxsooo%2Fdeep--grill-111418" alt="通过 skills.sh 安装"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-ff5c4d" alt="MIT 许可证"></a>
+  <a href="./README.md"><img src="https://img.shields.io/badge/README-English-111418" alt="Read in English"></a>
 </p>
 
 拷问是让 Agent 对齐你真实意图的好方法。但访谈式拷问会把每个问题都抛给*你*，一次一个——包括那些 Agent 本可以通过阅读代码、检查文档或运行一次小实验自行回答的问题。
@@ -60,7 +61,7 @@ deep-grill 把方向反过来：
 ## 工作方式
 
 <p align="center">
-  <img src="./assets/release/deep-grill-workflow.png" alt="deep-grill 工作流程：方案、证据、自我拷问循环与主观分歧" width="100%">
+  <img src="./assets/release/deep-grill-workflow-cn.png" alt="deep-grill 工作流程：方案、证据、自我拷问循环与主观分歧" width="100%">
 </p>
 
 1. **画出决策树。** 找出分支、依赖、假设与未知项。
@@ -70,6 +71,10 @@ deep-grill 把方向反过来：
 5. **等待对齐。** 在确认达成共识前，不进入实现。
 
 ## 该选哪一种拷问
+
+<p align="center">
+  <img src="./assets/release/deep-grill-comparison-cn-square.png" alt="经典拷问与 deep-grill 的中文对比" width="760">
+</p>
 
 | 答案主要在哪里 | 使用方式 | 交互模式 |
 | --- | --- | --- |
