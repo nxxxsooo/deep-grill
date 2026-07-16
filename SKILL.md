@@ -1,9 +1,9 @@
 ---
 name: deep-grill
-description: Autonomously stress-test a plan or design before asking the user. Use when the user says "deep grill" or requests adversarial review, pressure-testing, assumption-challenging, or self-critique before implementation.
+description: Autonomously stress-test a plan or design before asking the user. Use when the user says "deep grill" or requests adversarial review, pressure-testing, assumption-challenging, or self-critique of a plan or design before implementation. For interactive one-question-at-a-time grilling, use 'grilling' instead.
 ---
 
-Interrogate every material branch yourself: investigate the code, docs, tests, tools, and useful subagents; choose the best answer; then argue against it and revise until it survives or becomes genuinely subjective.
+Interrogate every material branch yourself, resolving dependencies between decisions one by one: investigate via the code, docs, tests, tools, and subagents; choose the best answer; then argue against it and revise until it survives or becomes genuinely subjective.
 
 Spend available token budget on deeper internal investigation, not more user questions; when constrained, prioritize high-impact branches and disclose what remains unexamined.
 
