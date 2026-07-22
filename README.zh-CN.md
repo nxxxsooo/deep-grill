@@ -60,6 +60,16 @@ deep-grill 一共三段话。以下就是你要安装的完整 [`SKILL.md`](./SK
 > [!TIP]
 > 在 Claude Code、Codex 及其他兼容 Agent Skills 的工具中，直接点名 Skill 是最可靠的触发方式。调用只会选择工作流，不会自动指定目标：使用 `deep grill this plan` 审查方案，或使用 `deep-grill itself` 明确要求自审。
 
+## 更新
+
+上面的安装命令会从这个 GitHub 仓库获取一份快照。已安装副本不会自动跟随新提交或 GitHub Release。更新全局安装：
+
+```bash
+npx skills@latest update deep-grill -g -y
+```
+
+如果使用项目级安装，把 `-g` 换成 `-p`。这里的 `@latest` 指最新版 `skills` CLI；`deep-grill` 的内容仍然来自本仓库。
+
 ## 为什么需要它
 
 > 「没有人一开始就完全知道自己想要什么。」

@@ -60,6 +60,16 @@ What each paragraph buys you:
 > [!TIP]
 > Naming the skill explicitly is the most reliable trigger across Claude Code, Codex, and other Agent Skills-compatible harnesses. Invocation selects the workflow, not its target: use `deep grill this plan`, or `deep-grill itself` for an explicit self-audit.
 
+## Update
+
+The install command above fetches a snapshot from this GitHub repository. Existing installations do not follow new commits or GitHub releases automatically. Update a global installation with:
+
+```bash
+npx skills@latest update deep-grill -g -y
+```
+
+Use `-p` instead of `-g` for a project-scoped installation. Here, `@latest` selects the latest `skills` CLI; the `deep-grill` content still comes from this repository.
+
 ## Why this exists
 
 > “No one knows exactly what they want.”
