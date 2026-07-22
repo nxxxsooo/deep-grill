@@ -12,7 +12,7 @@
 
 <p align="center">
   An Agent Skill that investigates every branch of a plan, argues against its own answers,<br>
-  and escalates only the genuinely subjective forks — in one decision batch.
+  and escalates only the genuinely subjective forks in decision batches until the review converges.
 </p>
 
 <p align="center">
@@ -34,14 +34,14 @@ deep-grill is three paragraphs. This is the full [`SKILL.md`](./SKILL.md) body y
 >
 > Prioritize impact, uncertainty, and reversibility; stop at diminishing returns. Report the recommendation, evidence limits, residual risks, unresolved items, and unexamined scope.
 >
-> Ask only when the alternative is inventing user goals, constraints, priorities, risk tolerance, taste, or authority. Batch user decisions with recommendations; validate missing facts instead of guessing. Implement only after user confirms review and authorizes action.
+> Ask only when the alternative is inventing user goals, constraints, priorities, risk tolerance, taste, or authority. Batch user decisions with recommendations; validate missing facts instead of guessing. After each response, incorporate the decisions, revisit affected and newly exposed branches, and issue another batch when material unresolved choices remain; continue until the user confirms the resulting review. Implement only after separate authorization.
 <!-- deep-grill-skill-body:end -->
 
 What each paragraph buys you:
 
 - **Frame before branches.** A missing target gets one question; an implicit decision defaults to testing fitness and required changes.
 - **Bounded adversarial depth.** Every recommendation faces evidence, its strongest objection, and a concrete failure scenario, but the loop stops at diminishing returns and cannot recursively delegate itself.
-- **Separate alignment from authority.** Missing facts get validation paths, user-owned decisions get recommended defaults, and confirmation alone never grants implementation authority.
+- **Iterate to alignment; separate authority.** Missing facts get validation paths, user-owned decisions arrive in recommended batches, and each response reopens affected branches until the review is confirmed. Confirmation never grants implementation authority.
 
 ## Quickstart
 
@@ -73,20 +73,28 @@ deep-grill reverses that direction:
 - Project facts are investigated in the code, docs, tests, and available tools.
 - Each provisional answer is tested against its strongest objection and a concrete failure scenario.
 - Missing facts receive validation paths rather than invented values.
-- Independent user-owned decisions arrive together with recommended defaults.
-- Implementation waits for both a confirmed decision record and authorization to act.
+- Independent user-owned decisions arrive in recommended batches; each response reopens affected and newly exposed branches until the review is confirmed.
+- Implementation waits for separate authorization after review confirmation.
 
 ## How it works
 
-<p align="center">
-  <img src="./assets/release/deep-grill-workflow.png" alt="deep-grill workflow: plan, evidence, self-grill loop, and subjective forks" width="100%">
-</p>
+```mermaid
+flowchart LR
+    A["Plan or design"] --> B["Investigate evidence"]
+    B --> C["Answer, attack, revise"]
+    C --> D["Batch material user decisions"]
+    D --> E["User response"]
+    E --> F{"Material choices remain?"}
+    F -->|"Yes"| B
+    F -->|"No"| G["Confirm review"]
+    G --> H["Separate implementation authorization"]
+```
 
 1. **Establish the frame.** Ask once if the target is missing; otherwise infer the default fitness decision when needed.
 2. **Investigate proportionately.** Follow dependencies and use relevant evidence, tools, tests, and bounded independent reviews.
 3. **Answer, attack, revise.** Test the best answer against the strongest objection and a concrete failure scenario.
-4. **Escalate the residual frontier.** Batch independent user-owned decisions; give missing facts validation paths or conditional fallbacks.
-5. **Separate alignment from action.** Implement only after the decision record is confirmed and action is authorized.
+4. **Escalate and repeat.** Batch independent user-owned decisions; after each response, reopen affected and newly exposed branches, then issue another batch if material choices remain.
+5. **Separate alignment from action.** Confirm the converged review; implement only after separate authorization.
 
 ## Choose the right grill
 
@@ -97,7 +105,7 @@ deep-grill reverses that direction:
 | Where the answers live | Use | Interaction pattern |
 | --- | --- | --- |
 | In the user's goals, taste, or unstated preferences | Interactive grilling | Ask one focused question at a time |
-| In the repository, docs, tests, tools, or experiments | **deep-grill** | Investigate autonomously, then batch the subjective choices |
+| In the repository, docs, tests, tools, or experiments | **deep-grill** | Investigate autonomously, then iterate on subjective choices in batches |
 
 deep-grill complements interactive grilling; it does not replace it.
 
@@ -109,7 +117,7 @@ The portable, explicit trigger is:
 
 You can also state the full intent:
 
-> Autonomously stress-test this plan. Investigate answerable questions first, test recommendations against concrete failure scenarios, and batch only the independent decisions that require my judgment. Do not implement without authorization.
+> Autonomously stress-test this plan. Investigate answerable questions first, test recommendations against concrete failure scenarios, and batch only the independent decisions that require my judgment. Continue until I confirm the resulting review; do not implement without separate authorization.
 
 Automatic invocation depends on how each agent harness matches skill descriptions. If you need deterministic behavior, name `deep-grill` directly.
 
